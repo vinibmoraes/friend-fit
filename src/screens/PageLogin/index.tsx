@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import VStack from "../../components/VStack";
+import ResponsiveText from "../../components/ResponsiveText";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../constants";
 
@@ -18,10 +19,16 @@ const LoginScreen: React.FC<Props> = ({ onLoginSuccess }) => {
           style={styles.logo}
         />
 
-        <Text style={styles.welcome}>Que bom te ter aqui!</Text>
-        <Text style={styles.instructions}>
-          Preencha as informações de login:
-        </Text>
+        <ResponsiveText
+          text="Que bom te ter aqui!"
+          variant="title"
+          style={{ marginBottom: 10 }}
+        />
+        <ResponsiveText
+          text="Preencha as informações de login:"
+          variant="instruction"
+          style={{ marginBottom: 30 }}
+        />
 
         <TextInput label="CPF ou E-mail" mode="outlined" style={styles.input} />
         <TextInput
@@ -62,17 +69,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 15,
   },
-  welcome: {
-    color: "#833ab4",
-    fontSize: 18,
-    textAlign: "center",
-    marginBottom: 18,
-  },
-  instructions: {
-    color: "#833ab4",
-    textAlign: "center",
-    marginBottom: 50,
-  },
+
   input: {
     marginVertical: 6,
     backgroundColor: "white",
