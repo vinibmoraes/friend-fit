@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import VStack from "../../components/VStack";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../constants";
 
 interface Props {
   onLoginSuccess: () => void;
@@ -56,8 +57,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignSelf: "center",
-    width: 120,
-    height: 120,
+    width: SCREEN_WIDTH * 0.4,
+    height: SCREEN_HEIGHT * 0.1,
     resizeMode: "contain",
     marginBottom: 15,
   },
@@ -65,12 +66,12 @@ const styles = StyleSheet.create({
     color: "#833ab4",
     fontSize: 18,
     textAlign: "center",
-    marginBottom: 8,
+    marginBottom: 18,
   },
   instructions: {
     color: "#833ab4",
     textAlign: "center",
-    marginBottom: 16,
+    marginBottom: 50,
   },
   input: {
     marginVertical: 6,
