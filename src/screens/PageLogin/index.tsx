@@ -15,7 +15,7 @@ const LoginScreen: React.FC<Props> = ({ onLoginSuccess }) => {
     <View style={styles.container}>
       <VStack>
         <Image
-          source={require("../../../assets/logo-next-fit.png")}
+          source={require("../../../assets/logo-friend-fit.png")}
           style={styles.logo}
         />
 
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH * 0.4,
     height: SCREEN_HEIGHT * 0.1,
     resizeMode: "contain",
-    marginBottom: 15,
+    marginBottom: 35,
   },
 
   input: {
@@ -80,6 +80,8 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#833ab4",
+    paddingHorizontal: 16,
+    justifyContent: "center",
   },
 });
 
