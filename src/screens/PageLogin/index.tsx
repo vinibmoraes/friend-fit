@@ -1,5 +1,14 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import VStack from "../../components/VStack";
 import ResponsiveText from "../../components/ResponsiveText";
@@ -12,50 +21,73 @@ interface Props {
 
 const LoginScreen: React.FC<Props> = ({ onLoginSuccess }) => {
   return (
-    <View style={styles.container}>
-      <VStack>
-        <Image
-          source={require("../../../assets/logo-friend-fit.png")}
-          style={styles.logo}
-        />
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContainer}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.container}>
+            <VStack>
+              <Image
+                source={require("../../../assets/logo-friend-fit.png")}
+                style={styles.logo}
+              />
 
-        <ResponsiveText
-          text="Que bom te ter aqui!"
-          variant="title"
-          style={{ marginBottom: 10 }}
-        />
-        <ResponsiveText
-          text="Preencha as informações de login:"
-          variant="instruction"
-          style={{ marginBottom: 30 }}
-        />
+              <ResponsiveText
+                text="Que bom te ter aqui!"
+                variant="title"
+                style={{ marginBottom: 10 }}
+              />
+              <ResponsiveText
+                text="Preencha as informações de login:"
+                variant="instruction"
+                style={{ marginBottom: 30 }}
+              />
 
-        <TextInput label="CPF ou E-mail" mode="outlined" style={styles.input} />
-        <TextInput
-          label="Senha"
-          mode="outlined"
-          secureTextEntry
-          style={styles.input}
-        />
+              <TextInput
+                label="CPF ou E-mail"
+                mode="outlined"
+                style={styles.input}
+              />
+              <TextInput
+                label="Senha"
+                mode="outlined"
+                secureTextEntry
+                style={styles.input}
+              />
 
-        <View style={styles.buttonContainer}>
-          <Button
-            mode="contained"
-            icon={() => (
-              <MaterialIcons name="arrow-forward" size={20} color="white" />
-            )}
-            onPress={onLoginSuccess}
-            style={styles.button}
-          >
-            Avançar
-          </Button>
-        </View>
-      </VStack>
-    </View>
+              <View style={styles.buttonContainer}>
+                <Button
+                  mode="contained"
+                  icon={() => (
+                    <MaterialIcons
+                      name="arrow-forward"
+                      size={20}
+                      color="white"
+                    />
+                  )}
+                  onPress={onLoginSuccess}
+                  style={styles.button}
+                >
+                  Avançar
+                </Button>
+              </View>
+            </VStack>
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: "white",
@@ -69,7 +101,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 35,
   },
-
   input: {
     marginVertical: 6,
     backgroundColor: "white",
